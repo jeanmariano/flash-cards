@@ -3,8 +3,8 @@
     <head>
         <title>Flash Cards</title>
         <!-- We've provided some styles for you, aren't we nice? -->
-        <link rel="stylesheet" type="text/css" href="reset.css" />
-        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
     </head>
     <body ng-app="flashCards" >
         <div ng-controller="StatsController" id="statistics">
@@ -14,11 +14,13 @@
             </div>
         </div>
         <div ng-controller="MainController">
-            <button class="category-button" ng-click="getCategoryCards('MongoDB')" ng-class="{active: activeCat == 'MongoDB'}">MongoDB</button>
-            <button class="category-button" ng-click="getCategoryCards('Express')" ng-class="{active: activeCat == 'Express'}">Express</button>
-            <button class="category-button" ng-click="getCategoryCards('Angular')" ng-class="{active: activeCat == 'Angular'}">Angular</button>
-            <button class="category-button" ng-click="getCategoryCards('Node')" ng-class="{active: activeCat == 'Node'}">Node</button>
-            <button class="category-button" ng-click="getCategoryCards()" ng-class="{active: activeCat == ''}">Reset</button>
+            <div id="buttons">
+                <button class="category-button" ng-click="getCategoryCards('MongoDB')" ng-class="{active: activeCat == 'MongoDB'}">MongoDB</button>
+                <button class="category-button" ng-click="getCategoryCards('Express')" ng-class="{active: activeCat == 'Express'}">Express</button>
+                <button class="category-button" ng-click="getCategoryCards('Angular')" ng-class="{active: activeCat == 'Angular'}">Angular</button>
+                <button class="category-button" ng-click="getCategoryCards('Node')" ng-class="{active: activeCat == 'Node'}">Node</button>
+                <button class="category-button" ng-click="getCategoryCards()" ng-class="{active: activeCat == ''}">Reset</button>
+            </div>
 
         	<div
         		ng-repeat="flashCard in flashCards | orderBy : 'question'"
@@ -39,9 +41,12 @@
         	        <span ng-show="!flashCard.answeredCorrectly">Nope, you got it wrong.</span>
         	    </h2>
         	</div>
-        	<script src="angular.js"></script>
-        	<script src="app.js"></script>
-        	<script src="main.controller.js"></script>
+        	<script src="js/lib/angular.js"></script>
+        	<script src="js/app.js"></script>
+        	<script src="js/controllers/MainController.js"></script>
+            <script src="js/controllers/StatsController.js"></script>
+            <script src="js/factories/FlashCardsFactory.js"></script>
+            <script src="js/factories/ScoreFactory.js"></script>
         </div>
     </body>
 </html>
